@@ -1,0 +1,24 @@
+name: 'Sync-Fork'
+author: 'guo_net_win@live.com'
+description: 'fork仓库更新时自动同步'
+
+branding:
+  icon: 'git-branch'
+  color: 'gray-dark'
+
+inputs:
+  upstream_repo:
+    description: 'fork的长裤地址'
+    required: true
+
+  branchs:
+    description: '自动同步的分支，默认为：*, 同步所有分支, 如过仅同步指定分支，则是使用逗号分割,如: main,dev'
+    required: false
+    default: '*'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{inputs.upstream_repo}}
+    - ${{inputs.branchs}}
