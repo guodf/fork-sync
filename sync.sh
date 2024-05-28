@@ -28,15 +28,5 @@ for branch in ${branchs}; do
 done
 
 # sync tag
-upstream_tags=$(git ls-remote --tags upstream|cut -d -f3-)
-origin_tags=$(git ls-remote --tags origin|cut -d -f3-|tr '\n' ',')
-
-for tag in ${upstream_tags}; do
-    if [[ ${origin_tags} = *"${tag}"* ]]; then
-        echo exists tag ${tag}
-    else
-        git fetch upstream tags/${tag}
-        git tag ${tag}
-        git push origin ${tag}
-    fi
-done
+git fetch upstream --tags -f
+git push origin --tags -f
