@@ -20,7 +20,7 @@ for branch in ${branchs}; do
         echo exists $(git branch --show-current)
         git merge upstream/${branch}
         echo merge upstream/${branch} into origin/${branch}
-        git push origin ${branch}
+        git push origin ${branch} -f
     else
         git checkout -b ${branch} upstream/${branch}
         git push origin ${branch}
