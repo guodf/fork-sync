@@ -7,7 +7,7 @@
 name: sync a fork
 on:
     schedule:
-        - cron: "1 * * * *"
+        - cron: "3 3 * * *"
     workflow_dispatch: 
 
 jobs:
